@@ -1,7 +1,7 @@
 import '../../flutter_google_maps.dart';
 
 class AppTextField {
-  static Widget withPrefixIcon({
+  static Widget simple({
     // required VoidCallback onTap,
     required String text,
     // required String icon,
