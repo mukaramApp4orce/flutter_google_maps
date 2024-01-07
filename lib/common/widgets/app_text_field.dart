@@ -2,9 +2,7 @@ import '../../flutter_google_maps.dart';
 
 class AppTextField {
   static Widget simple({
-    // required VoidCallback onTap,
     required String text,
-    // required String icon,
     required TextEditingController controller,
     required Function onChange,
   }) {
@@ -21,7 +19,6 @@ class AppTextField {
         fillColor: AppColors.colorPinkWhite,
         hintText: text,
         hintStyle: const TextStyle(
-          // color: AppColors.greyText,
           fontSize: 14,
           fontWeight: FontWeight.w300,
         ),
@@ -35,20 +32,6 @@ class AppTextField {
           minWidth: 398,
           minHeight: 56,
         ),
-        // prefixIcon: GestureDetector(
-        //   onTap: onTap,
-        //   child: Container(
-        //     padding: const EdgeInsets.only(
-        //       left: 16,
-        //       right: 16,
-        //     ),
-        //     child: AppSvg.asset(
-        //       icon,
-        //       width: 19,
-        //       height: 19,
-        //     ),
-        //   ),
-        // ),
       ),
     );
   }

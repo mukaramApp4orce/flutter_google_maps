@@ -6,11 +6,17 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: _appBar,
+      body: _body,
+    );
+  }
+
+  PreferredSizeWidget get _appBar => AppBar(
         title: const Text("Home View"),
         centerTitle: true,
-      ),
-      body: Center(
+      );
+
+  Widget get _body => Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -21,7 +27,5 @@ class HomeView extends GetView<HomeController> {
             ),
           ],
         ),
-      ),
-    );
-  }
+      );
 }
