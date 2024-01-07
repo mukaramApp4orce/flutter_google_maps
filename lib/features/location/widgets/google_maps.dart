@@ -1,15 +1,29 @@
-import 'package:flutter_google_maps/flutter_google_maps.dart';
+import '../../../flutter_google_maps.dart';
 
-class GoogleMaps extends GetWidget<LocationController> {
-  const GoogleMaps({super.key});
+class GoogleMapWidget extends GetWidget<LocationController> {
+  const GoogleMapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return GoogleMap(
-      initialCameraPosition: CameraPosition(
-        target: LatLng(controller.latitude, controller.longitude),
-      ),
+    return GetBuilder<LocationController>(
+      initState: (_) async {
+        final hasAccess = await controller.getPermissionAndCurrentLocation();
+        if (hasAccess) await controller.updateToCurrentLocation();
+      },
+      builder: (_) {
+        return GoogleMap(
+          trafficEnabled: true,
+          myLocationButtonEnabled: false,
+          zoomControlsEnabled: false,
+          markers: controller.markers.toSet(),
+          onMapCreated: controller.setGoogleMapController,
+          initialCameraPosition: controller.initialCameraPosition,
+          onTap: (latLng) async {
+            //* Change Marker Position
+            await controller.changeMarker(latLng);
+          },
+        );
+      },
     );
   }
 }
